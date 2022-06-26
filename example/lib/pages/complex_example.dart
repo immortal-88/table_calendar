@@ -26,6 +26,7 @@ class _TableComplexExampleState extends State<TableComplexExample> {
   RangeSelectionMode _rangeSelectionMode = RangeSelectionMode.toggledOff;
   DateTime? _rangeStart;
   DateTime? _rangeEnd;
+  late PageController _controller;
 
   @override
   void initState() {
@@ -138,6 +139,7 @@ class _TableComplexExampleState extends State<TableComplexExample> {
           TableCalendar<Event>(
             firstDay: kFirstDay,
             lastDay: kLastDay,
+            controller: _controller,
             focusedDay: _focusedDay.value,
             headerVisible: false,
             selectedDayPredicate: (day) => _selectedDays.contains(day),

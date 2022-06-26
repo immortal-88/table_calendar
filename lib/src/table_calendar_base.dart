@@ -8,6 +8,7 @@ import 'shared/utils.dart';
 import 'widgets/calendar_core.dart';
 
 class TableCalendarBase extends StatefulWidget {
+  late PageController controller;
   final DateTime firstDay;
   final DateTime lastDay;
   final DateTime focusedDay;
@@ -39,6 +40,7 @@ class TableCalendarBase extends StatefulWidget {
     required this.firstDay,
     required this.lastDay,
     required this.focusedDay,
+    required this.controller,
     this.calendarFormat = CalendarFormat.month,
     this.dowBuilder,
     required this.dayBuilder,
@@ -79,7 +81,7 @@ class TableCalendarBase extends StatefulWidget {
 
 class _TableCalendarBaseState extends State<TableCalendarBase> {
   late final ValueNotifier<double> _pageHeight;
-  late final PageController _pageController;
+  // late final PageController _pageController;
   late DateTime _focusedDay;
   late int _previousIndex;
   late bool _pageCallbackDisabled;
@@ -95,8 +97,8 @@ class _TableCalendarBaseState extends State<TableCalendarBase> {
     final initialPage = _calculateFocusedPage(
         widget.calendarFormat, widget.firstDay, _focusedDay);
 
-    _pageController = PageController(initialPage: initialPage);
-    widget.onCalendarCreated?.call(_pageController);
+    widget.controller = PageController(initialPage: initialPage);
+    widget.onCalendarCreated?.call(widget.controller);
 
     _previousIndex = initialPage;
     _pageCallbackDisabled = false;
@@ -126,7 +128,7 @@ class _TableCalendarBaseState extends State<TableCalendarBase> {
 
   @override
   void dispose() {
-    _pageController.dispose();
+    widget.controller.dispose();
     _pageHeight.dispose();
     super.dispose();
   }
@@ -157,16 +159,16 @@ class _TableCalendarBaseState extends State<TableCalendarBase> {
         final jumpIndex =
             currentIndex > _previousIndex ? currentIndex - 1 : currentIndex + 1;
 
-        _pageController.jumpToPage(jumpIndex);
+        widget.controller.jumpToPage(jumpIndex);
       }
 
-      _pageController.animateToPage(
+      widget.controller.animateToPage(
         currentIndex,
         duration: widget.pageAnimationDuration,
         curve: widget.pageAnimationCurve,
       );
     } else {
-      _pageController.jumpToPage(currentIndex);
+      widget.controller.jumpToPage(currentIndex);
     }
 
     _previousIndex = currentIndex;
@@ -201,7 +203,7 @@ class _TableCalendarBaseState extends State<TableCalendarBase> {
             },
             child: CalendarCore(
               constraints: constraints,
-              pageController: _pageController,
+              pageController: widget.controller,
               scrollPhysics: _canScrollHorizontally
                   ? PageScrollPhysics()
                   : NeverScrollableScrollPhysics(),

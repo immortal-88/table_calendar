@@ -19,6 +19,7 @@ class _TableRangeExampleState extends State<TableRangeExample> {
   DateTime? _selectedDay;
   DateTime? _rangeStart;
   DateTime? _rangeEnd;
+  late PageController _controller;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class _TableRangeExampleState extends State<TableRangeExample> {
       body: TableCalendar(
         firstDay: kFirstDay,
         lastDay: kLastDay,
+        controller: _controller,
         focusedDay: _focusedDay,
         selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
         rangeStartDay: _rangeStart,

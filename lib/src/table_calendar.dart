@@ -35,6 +35,8 @@ class TableCalendar<T> extends StatefulWidget {
   /// If nothing is provided, a default locale will be used.
   final dynamic locale;
 
+  late PageController controller;
+
   /// The start of the selected day range.
   final DateTime? rangeStartDay;
 
@@ -207,6 +209,7 @@ class TableCalendar<T> extends StatefulWidget {
     required DateTime focusedDay,
     required DateTime firstDay,
     required DateTime lastDay,
+    required this.controller,
     DateTime? currentDay,
     this.locale,
     this.rangeStartDay,
@@ -476,9 +479,10 @@ class _TableCalendarState<T> extends State<TableCalendar<T>> {
           flex: widget.shouldFillViewport ? 1 : 0,
           child: TableCalendarBase(
             onCalendarCreated: (pageController) {
-              _pageController = pageController;
+              // _pageController = pageController;
               widget.onCalendarCreated?.call(pageController);
             },
+            controller: widget.controller,
             focusedDay: _focusedDay.value,
             calendarFormat: widget.calendarFormat,
             availableGestures: widget.availableGestures,

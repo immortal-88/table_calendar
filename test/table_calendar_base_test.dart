@@ -8,6 +8,7 @@ import 'package:simple_gesture_detector/simple_gesture_detector.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'common.dart';
+import 'table_calendar_test.dart';
 
 Widget setupTestWidget(Widget child) {
   return Directionality(
@@ -22,12 +23,14 @@ void main() {
       'in month format, starting day is Sunday',
       (tester) async {
         final focusedDay = DateTime.utc(2021, 7, 15);
+        final controller = PageController();
 
         await tester.pumpWidget(
           setupTestWidget(
             TableCalendarBase(
               firstDay: DateTime.utc(2021, 5, 15),
               lastDay: DateTime.utc(2021, 8, 18),
+              controller: controller,
               focusedDay: focusedDay,
               dayBuilder: (context, day, focusedDay) {
                 return Text(
@@ -68,6 +71,7 @@ void main() {
       'in two weeks format, starting day is Sunday',
       (tester) async {
         final focusedDay = DateTime.utc(2021, 7, 15);
+        final controller = PageController();
 
         await tester.pumpWidget(
           setupTestWidget(
@@ -75,6 +79,7 @@ void main() {
               firstDay: DateTime.utc(2021, 5, 15),
               lastDay: DateTime.utc(2021, 8, 18),
               focusedDay: focusedDay,
+              controller: controller,
               dayBuilder: (context, day, focusedDay) {
                 return Text(
                   '${day.day}',
@@ -114,6 +119,7 @@ void main() {
       'in week format, starting day is Sunday',
       (tester) async {
         final focusedDay = DateTime.utc(2021, 7, 15);
+        final controller = PageController();
 
         await tester.pumpWidget(
           setupTestWidget(
@@ -121,6 +127,7 @@ void main() {
               firstDay: DateTime.utc(2021, 5, 15),
               lastDay: DateTime.utc(2021, 8, 18),
               focusedDay: focusedDay,
+              controller: controller,
               dayBuilder: (context, day, focusedDay) {
                 return Text(
                   '${day.day}',
@@ -160,12 +167,14 @@ void main() {
       'in month format, starting day is Monday',
       (tester) async {
         final focusedDay = DateTime.utc(2021, 7, 15);
+        final controller = PageController();
 
         await tester.pumpWidget(
           setupTestWidget(
             TableCalendarBase(
               firstDay: DateTime.utc(2021, 5, 15),
               lastDay: DateTime.utc(2021, 8, 18),
+              controller: controller,
               focusedDay: focusedDay,
               dayBuilder: (context, day, focusedDay) {
                 return Text(
@@ -213,6 +222,7 @@ void main() {
               firstDay: DateTime.utc(2021, 5, 15),
               lastDay: DateTime.utc(2021, 8, 18),
               focusedDay: focusedDay,
+              controller: controller,
               dayBuilder: (context, day, focusedDay) {
                 return Text(
                   '${day.day}',
@@ -259,6 +269,7 @@ void main() {
               firstDay: DateTime.utc(2021, 5, 15),
               lastDay: DateTime.utc(2021, 8, 18),
               focusedDay: focusedDay,
+              controller: controller,
               dayBuilder: (context, day, focusedDay) {
                 return Text(
                   '${day.day}',
@@ -310,6 +321,7 @@ void main() {
             firstDay: DateTime.utc(2021, 5, 15),
             lastDay: DateTime.utc(2021, 8, 18),
             focusedDay: focusedDay,
+            controller: controller,
             dayBuilder: (context, day, focusedDay) {
               return Text(
                 '${day.day}',
@@ -360,6 +372,7 @@ void main() {
             TableCalendarBase(
               firstDay: DateTime.utc(2021, 5, 15),
               lastDay: DateTime.utc(2021, 8, 18),
+              controller: controller,
               focusedDay: DateTime.utc(2021, 7, 15),
               dayBuilder: (context, day, focusedDay) {
                 return Text(

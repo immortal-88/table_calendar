@@ -24,6 +24,7 @@ class _TableMultiExampleState extends State<TableMultiExample> {
 
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now();
+  late PageController _controller;
 
   @override
   void dispose() {
@@ -69,6 +70,7 @@ class _TableMultiExampleState extends State<TableMultiExample> {
           TableCalendar<Event>(
             firstDay: kFirstDay,
             lastDay: kLastDay,
+            controller: _controller,
             focusedDay: _focusedDay,
             calendarFormat: _calendarFormat,
             eventLoader: _getEventsForDay,

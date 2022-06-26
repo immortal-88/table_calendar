@@ -15,6 +15,7 @@ class _TableBasicsExampleState extends State<TableBasicsExample> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
+  late PageController _controller;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +26,7 @@ class _TableBasicsExampleState extends State<TableBasicsExample> {
       body: TableCalendar(
         firstDay: kFirstDay,
         lastDay: kLastDay,
+        controller: _controller,
         focusedDay: _focusedDay,
         calendarFormat: _calendarFormat,
         selectedDayPredicate: (day) {

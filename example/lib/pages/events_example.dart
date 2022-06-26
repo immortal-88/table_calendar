@@ -20,6 +20,7 @@ class _TableEventsExampleState extends State<TableEventsExample> {
   DateTime? _selectedDay;
   DateTime? _rangeStart;
   DateTime? _rangeEnd;
+  late PageController _controller;
 
   @override
   void initState() {
@@ -93,6 +94,7 @@ class _TableEventsExampleState extends State<TableEventsExample> {
           TableCalendar<Event>(
             firstDay: kFirstDay,
             lastDay: kLastDay,
+            controller: _controller,
             focusedDay: _focusedDay,
             selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
             rangeStartDay: _rangeStart,

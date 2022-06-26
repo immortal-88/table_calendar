@@ -15,6 +15,7 @@ final initialFocusedDay = DateTime.utc(2021, 7, 15);
 final today = initialFocusedDay;
 final firstDay = DateTime.utc(2021, 5, 15);
 final lastDay = DateTime.utc(2021, 9, 18);
+final controller = PageController();
 
 Widget setupTestWidget(Widget child) {
   return Directionality(
@@ -33,6 +34,7 @@ Widget createTableCalendar({
     TableCalendar(
       focusedDay: focusedDay ?? initialFocusedDay,
       firstDay: firstDay,
+      controller: controller,
       lastDay: lastDay,
       currentDay: today,
       calendarFormat: calendarFormat,
@@ -428,6 +430,7 @@ void main() {
             focusedDay: initialFocusedDay,
             firstDay: firstDay,
             lastDay: lastDay,
+            controller: controller,
             currentDay: today,
             eventLoader: (day) {
               if (day.day == eventDay.day && day.month == eventDay.month) {
@@ -467,6 +470,7 @@ void main() {
           TableCalendar(
             focusedDay: initialFocusedDay,
             firstDay: firstDay,
+            controller: controller,
             lastDay: lastDay,
             currentDay: today,
           ),
@@ -492,6 +496,7 @@ void main() {
             focusedDay: now,
             firstDay: firstDay,
             lastDay: lastDay,
+            controller: controller,
           ),
         ));
 
@@ -513,6 +518,7 @@ void main() {
             focusedDay: initialFocusedDay,
             firstDay: firstDay,
             lastDay: lastDay,
+            controller: controller,
             currentDay: today,
             selectedDayPredicate: (day) {
               return isSameDay(day, selectedDay);
@@ -538,6 +544,7 @@ void main() {
             focusedDay: initialFocusedDay,
             firstDay: firstDay,
             lastDay: lastDay,
+            controller: controller,
             currentDay: today,
             holidayPredicate: (day) {
               return isSameDay(day, holiday);
@@ -639,6 +646,7 @@ void main() {
           focusedDay: today,
           firstDay: firstDay,
           lastDay: lastDay,
+          controller: controller,
           currentDay: today,
           calendarFormat: calendarFormat,
           onFormatChanged: (format) {
@@ -665,6 +673,7 @@ void main() {
           firstDay: firstDay,
           lastDay: lastDay,
           currentDay: today,
+          controller: controller,
           calendarFormat: calendarFormat,
           onFormatChanged: (format) {
             calendarFormat = format;
@@ -690,6 +699,7 @@ void main() {
           firstDay: firstDay,
           lastDay: lastDay,
           currentDay: today,
+          controller: controller,
           calendarFormat: calendarFormat,
           onFormatChanged: (format) {
             calendarFormat = format;
@@ -717,6 +727,7 @@ void main() {
           TableCalendar(
             focusedDay: initialFocusedDay,
             firstDay: firstDay,
+            controller: controller,
             lastDay: lastDay,
             currentDay: today,
             onDaySelected: (selected, focused) {
@@ -746,6 +757,7 @@ void main() {
             focusedDay: initialFocusedDay,
             firstDay: firstDay,
             lastDay: lastDay,
+            controller: controller,
             currentDay: today,
             onDaySelected: (selected, focused) {
               focusedDay = focused;
@@ -775,6 +787,7 @@ void main() {
             focusedDay: initialFocusedDay,
             firstDay: firstDay,
             lastDay: lastDay,
+            controller: controller,
             currentDay: today,
             onDaySelected: (selected, focused) {
               selectedDay = selected;
@@ -809,6 +822,7 @@ void main() {
             focusedDay: DateTime.utc(2021, 8, 16),
             firstDay: firstDay,
             lastDay: lastDay,
+            controller: controller,
             currentDay: DateTime.utc(2021, 8, 16),
             onDaySelected: (selected, focused) {
               selectedDay = selected;
@@ -845,6 +859,7 @@ void main() {
             firstDay: firstDay,
             lastDay: lastDay,
             currentDay: today,
+            controller: controller,
             onDayLongPressed: (selected, focused) {
               selectedDay = selected;
             },
@@ -872,6 +887,7 @@ void main() {
             focusedDay: initialFocusedDay,
             firstDay: firstDay,
             lastDay: lastDay,
+            controller: controller,
             currentDay: today,
             onDayLongPressed: (selected, focused) {
               focusedDay = focused;
@@ -901,6 +917,7 @@ void main() {
             focusedDay: initialFocusedDay,
             firstDay: firstDay,
             lastDay: lastDay,
+            controller: controller,
             currentDay: today,
             onDayLongPressed: (selected, focused) {
               selectedDay = selected;
@@ -935,6 +952,7 @@ void main() {
             focusedDay: DateTime.utc(2021, 8, 16),
             firstDay: firstDay,
             lastDay: lastDay,
+            controller: controller,
             currentDay: DateTime.utc(2021, 8, 16),
             onDayLongPressed: (selected, focused) {
               selectedDay = selected;
@@ -973,6 +991,7 @@ void main() {
             firstDay: firstDay,
             lastDay: lastDay,
             currentDay: today,
+            controller: controller,
             rangeSelectionMode: RangeSelectionMode.enforced,
             onRangeSelected: (start, end, focused) {
               rangeStart = start;
@@ -1017,6 +1036,7 @@ void main() {
             firstDay: firstDay,
             lastDay: lastDay,
             currentDay: today,
+            controller: controller,
             rangeSelectionMode: RangeSelectionMode.enforced,
             onRangeSelected: (start, end, focused) {
               rangeStart = start;
@@ -1061,6 +1081,7 @@ void main() {
             focusedDay: initialFocusedDay,
             firstDay: firstDay,
             lastDay: lastDay,
+            controller: controller,
             currentDay: today,
             rangeSelectionMode: RangeSelectionMode.toggledOff,
             onDaySelected: (selected, focused) {
@@ -1117,6 +1138,7 @@ void main() {
             firstDay: firstDay,
             lastDay: lastDay,
             currentDay: today,
+            controller: controller,
             rangeSelectionMode: RangeSelectionMode.toggledOn,
             onDaySelected: (selected, focused) {
               selectedDay = selected;
@@ -1171,6 +1193,7 @@ void main() {
             focusedDay: initialFocusedDay,
             firstDay: firstDay,
             lastDay: lastDay,
+            controller: controller,
             currentDay: today,
             rangeSelectionMode: RangeSelectionMode.enforced,
             onDaySelected: (selected, focused) {
@@ -1226,6 +1249,7 @@ void main() {
             focusedDay: initialFocusedDay,
             firstDay: firstDay,
             lastDay: lastDay,
+            controller: controller,
             currentDay: today,
             rangeSelectionMode: RangeSelectionMode.disabled,
             onDaySelected: (selected, focused) {
@@ -1281,6 +1305,7 @@ void main() {
             focusedDay: initialFocusedDay,
             firstDay: firstDay,
             lastDay: lastDay,
+            controller: controller,
             currentDay: today,
             rangeStartDay: rangeStart,
             rangeEndDay: rangeEnd,
@@ -1316,6 +1341,7 @@ void main() {
             focusedDay: initialFocusedDay,
             firstDay: firstDay,
             lastDay: lastDay,
+            controller: controller,
             currentDay: today,
             rangeStartDay: rangeStart,
             rangeEndDay: rangeEnd,
@@ -1351,6 +1377,7 @@ void main() {
             focusedDay: initialFocusedDay,
             firstDay: firstDay,
             lastDay: lastDay,
+            controller: controller,
             currentDay: today,
             rangeStartDay: rangeStart,
             rangeEndDay: rangeEnd,
